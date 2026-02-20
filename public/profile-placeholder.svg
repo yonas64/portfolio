@@ -1,0 +1,39 @@
+<svg width="720" height="900" viewBox="0 0 720 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="90" y1="80" x2="640" y2="860" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1B2130" />
+      <stop offset="1" stop-color="#0E1118" />
+    </linearGradient>
+    <linearGradient id="hoodie" x1="182" y1="520" x2="540" y2="882" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1E293B" />
+      <stop offset="1" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="skin" x1="280" y1="190" x2="452" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A77054" />
+      <stop offset="1" stop-color="#7B4E38" />
+    </linearGradient>
+    <radialGradient id="accent" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(542 166) rotate(128.1) scale(470 360)">
+      <stop stop-color="#22D3EE" stop-opacity="0.32" />
+      <stop offset="1" stop-color="#22D3EE" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="720" height="900" fill="url(#bg)" />
+  <rect width="720" height="900" fill="url(#accent)" />
+
+  <circle cx="360" cy="352" r="190" fill="#111827" />
+  <path d="M188 712C188 588 266 510 360 510C454 510 532 588 532 712V900H188V712Z" fill="url(#hoodie)" />
+  <path d="M248 694C248 605 296 548 360 548C424 548 472 605 472 694V900H248V694Z" fill="#111827" />
+
+  <path d="M271 380C271 271 310 201 360 201C410 201 449 271 449 380C449 479 408 544 360 544C312 544 271 479 271 380Z" fill="url(#skin)" />
+  <path d="M258 360C258 261 307 160 360 160C413 160 462 261 462 360V394H258V360Z" fill="#131823" />
+  <path d="M290 191C312 171 334 161 360 161C386 161 408 171 430 191L418 209C401 193 381 185 360 185C339 185 319 193 302 209L290 191Z" fill="#374151" fill-opacity="0.55" />
+
+  <ellipse cx="323" cy="374" rx="14" ry="8" fill="#1A1A1A" fill-opacity="0.65" />
+  <ellipse cx="397" cy="374" rx="14" ry="8" fill="#1A1A1A" fill-opacity="0.65" />
+  <path d="M327 430C339 442 381 442 393 430" stroke="#2F1F1A" stroke-opacity="0.65" stroke-width="6" stroke-linecap="round" />
+
+  <path d="M360 558L322 585H398L360 558Z" fill="#A77054" />
+  <path d="M170 95H244" stroke="#22D3EE" stroke-opacity="0.44" stroke-width="2" />
+  <path d="M476 806H550" stroke="#22D3EE" stroke-opacity="0.32" stroke-width="2" />
+</svg>
