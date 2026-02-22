@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { Code2, Database, Palette, Mail, Github, Linkedin, Terminal, ArrowRight } from 'lucide-react';
+import { Code2, Database, Palette, Mail, Github, Linkedin, Terminal, ArrowRight, ArrowLeft } from 'lucide-react';
 import RobotAssistant from './components/RobotAssistant';
 import { ImageWithFallback } from './components/figma/ImageWithFallback';
 
@@ -8,6 +8,70 @@ type SectionKey = 'hero' | 'skills' | 'projects' | 'hobbies' | 'contact';
 
 const sectionTitles: SectionKey[] = ['hero', 'skills', 'projects', 'hobbies', 'contact'];
 const heroPhotoSrc = '/profile-placeholder.svg';
+const psychologySections = [
+  {
+    title: 'Jungian Psychology',
+    image: '/psychology/as-1.png',
+    body: [
+      'The deeper you look into the mind, the more you realize most of what drives you is invisible.',
+      'These ideas, inspired by Carl Jung, are not just theories. They are mirrors.',
+    ],
+  },
+  {
+    title: 'The Shadow',
+    image: '/psychology/as-4.png',
+    body: [
+      'Think about the traits you dislike most in other people: arrogance, weakness, laziness, neediness.',
+      'Why do those traits trigger you so strongly?',
+      'Jung suggested that what disturbs us in others often reflects something unaccepted within ourselves.',
+      'The Shadow is not evil. It is simply the part of you that was pushed away because it was inconvenient, judged, or misunderstood.',
+      'Growth begins the moment you stop fighting your Shadow and start understanding it.',
+    ],
+  },
+  {
+    title: 'The Collective Unconscious',
+    image: '/psychology/collective2.png',
+    body: [
+      'Why do certain stories move you deeply, even if they come from cultures far from yours?',
+      'Why do symbols like the hero, the villain, or the wise guide feel instantly familiar?',
+      'Jung believed that beneath your personal memories lies a shared human layer of the mind: the Collective Unconscious.',
+      'It connects you to myths, dreams, and stories across time and explains why some patterns feel universal.',
+      'You are more connected to humanity than you think.',
+    ],
+  },
+  {
+    title: 'Dream Interpretation',
+    image: '/psychology/dream.jpg',
+    body: [
+      'Jung believed dreams are not random noise. They are messages from parts of you that do not speak during the day.',
+      'A dream does not predict the future. It reveals what you are ignoring.',
+      'A fall might reflect loss of control. A locked door might reflect avoidance. A shadowy figure might reflect something unacknowledged within you.',
+      'Your unconscious speaks in symbols, not sentences.',
+    ],
+  },
+  {
+    title: 'Self-Awareness and Metacognition',
+    image: '/psychology/self.jpg',
+    body: [
+      'Notice your reactions. When someone criticizes you, what rises first: anger, defensiveness, or silence?',
+      'Do you react automatically, or do you observe yourself reacting?',
+      'Metacognition is the ability to step outside your thoughts and watch them.',
+      'The moment you observe your thinking, you are no longer controlled by it.',
+      'Self-awareness is quiet power.',
+    ],
+  },
+  {
+    title: 'Individuation',
+    image: '/psychology/individuation.svg',
+    body: [
+      'Who are you without expectations, labels, performance, or the need to impress?',
+      'Jung called the journey toward wholeness individuation.',
+      'It is not about becoming perfect. It is about becoming honest.',
+      'It is the slow integration of contradictions: strength and weakness, confidence and fear, light and shadow.',
+      'Individuation is not self-improvement. It is self-integration.',
+    ],
+  },
+];
 const projectShowcase = [
   {
     title: 'SecureAuth Dashboard',
@@ -46,6 +110,7 @@ const projectShowcase = [
 
 export default function App() {
   const [activeSection, setActiveSection] = useState<SectionKey>('hero');
+  const [currentPath, setCurrentPath] = useState(() => window.location.pathname.toLowerCase());
 
   const shouldReduceMotion = useReducedMotion();
   const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -76,6 +141,15 @@ export default function App() {
   );
 
   useEffect(() => {
+    const onPopState = () => {
+      setCurrentPath(window.location.pathname.toLowerCase());
+    };
+
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
+
+  useEffect(() => {
     const observerOptions = {
       root: null,
       rootMargin: '-45% 0px -45% 0px',
@@ -98,7 +172,7 @@ export default function App() {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [currentPath]);
 
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
@@ -106,6 +180,109 @@ export default function App() {
       section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
+
+  const navigateToPsychology = () => {
+    if (window.location.pathname !== '/psychology') {
+      window.history.pushState({}, '', '/psychology');
+      setCurrentPath('/psychology');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const navigateToPortfolio = () => {
+    if (window.location.pathname !== '/') {
+      window.history.pushState({}, '', '/');
+      setCurrentPath('/');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  if (currentPath === '/psychology') {
+    return (
+      <div className="relative min-h-screen overflow-x-clip bg-zinc-950 px-6 py-16 text-zinc-100">
+        <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+          <motion.div
+            className="absolute -top-32 left-[5%] h-80 w-80 rounded-full bg-cyan-400/10 blur-3xl"
+            animate={shouldReduceMotion ? undefined : { x: [0, 35, -10, 0], y: [0, 24, -16, 0] }}
+            transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut' }}
+          />
+          <motion.div
+            className="absolute bottom-[-12rem] right-[8%] h-96 w-96 rounded-full bg-blue-500/10 blur-3xl"
+            animate={shouldReduceMotion ? undefined : { x: [0, -32, 0], y: [0, -26, 0] }}
+            transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
+          />
+        </div>
+
+        <main className="relative z-10 mx-auto max-w-5xl">
+          <motion.button
+            type="button"
+            onClick={navigateToPortfolio}
+            whileHover={shouldReduceMotion ? undefined : { x: -2 }}
+            className="mb-8 inline-flex items-center gap-2 border border-zinc-700 px-4 py-2 text-sm text-zinc-300 transition-colors hover:border-zinc-500 hover:text-zinc-100"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back to portfolio
+          </motion.button>
+
+          <motion.div initial="hidden" animate="show" variants={stagger}>
+            {psychologySections.map((section, index) => (
+              <motion.section
+                key={section.title}
+                variants={riseIn}
+                className="mb-6 border border-zinc-800 bg-zinc-900/40 p-6 md:p-8 backdrop-blur-sm"
+              >
+                <div className="grid items-center gap-6 md:grid-cols-2">
+                  <motion.div
+                    initial={{ opacity: 0, x: shouldReduceMotion ? 0 : index % 2 === 0 ? 36 : -36 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.45 }}
+                    transition={{ duration: 0.55, ease: 'easeOut' }}
+                    className={index % 2 === 0 ? 'md:order-2' : 'md:order-1'}
+                  >
+                    <div className="relative overflow-hidden border border-zinc-800 bg-zinc-950/60">
+                      <ImageWithFallback
+                        src={section.image}
+                        alt={`${section.title} concept illustration`}
+                        className="h-56 w-full object-cover"
+                      />
+                      <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/5" />
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, x: shouldReduceMotion ? 0 : index % 2 === 0 ? -36 : 36 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.45 }}
+                    transition={{ duration: 0.55, ease: 'easeOut', delay: shouldReduceMotion ? 0 : 0.05 }}
+                    className={index % 2 === 0 ? 'md:order-1' : 'md:order-2'}
+                  >
+                    <h2 className="mb-4 text-2xl md:text-3xl">{section.title}</h2>
+                    <div className="space-y-3">
+                      {section.body.map((paragraph, paragraphIndex) => {
+                        const isLast = paragraphIndex === section.body.length - 1;
+                        return (
+                          <p
+                            key={`${section.title}-${paragraphIndex}`}
+                            className={
+                              isLast
+                                ? 'border border-cyan-400/40 bg-cyan-400/10 px-4 py-3 text-zinc-100'
+                                : 'text-zinc-300'
+                            }
+                          >
+                            {paragraph}
+                          </p>
+                        );
+                      })}
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.section>
+            ))}
+          </motion.div>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="relative min-h-screen overflow-x-clip bg-zinc-950 text-zinc-100">
@@ -196,7 +373,7 @@ export default function App() {
                   <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/5" />
                 </div>
               </div>
-              <p className="mt-3 text-center text-xs text-zinc-500">Add your photo as `public/profile.jpg`</p>
+              <p className="mt-3 text-center text-xs text-zinc-500"></p>
             </motion.div>
           </div>
         </motion.section>
@@ -385,6 +562,12 @@ export default function App() {
                   text: 'Creating short-form content around projects, ideas, and practical workflows.',
                   value: 'Clear communication and stronger audience connection.',
                 },
+                {
+                  title: 'Jungian Psychology',
+                  text: 'Studying the shadow, dreams, and self-awareness to understand deeper human patterns.',
+                  value: 'Click to open a dedicated page with my notes and sections.',
+                  path: '/psychology',
+                },
               ].map((hobby) => (
                 <motion.div
                   key={hobby.title}
@@ -395,6 +578,16 @@ export default function App() {
                   <h3 className="mb-3 text-2xl">{hobby.title}</h3>
                   <p className="mb-4 text-zinc-400">{hobby.text}</p>
                   <p className="text-sm text-zinc-500">{hobby.value}</p>
+                  {hobby.path && (
+                    <button
+                      type="button"
+                      onClick={navigateToPsychology}
+                      className="mt-5 inline-flex items-center gap-2 border border-zinc-700 px-3 py-2 text-sm text-zinc-300 transition-colors hover:border-zinc-500 hover:text-zinc-100"
+                    >
+                      Open psychology page
+                      <ArrowRight className="h-4 w-4" />
+                    </button>
+                  )}
                 </motion.div>
               ))}
             </motion.div>
