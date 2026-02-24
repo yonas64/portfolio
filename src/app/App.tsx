@@ -7,7 +7,7 @@ import { ImageWithFallback } from './components/figma/ImageWithFallback';
 type SectionKey = 'hero' | 'skills' | 'projects' | 'hobbies' | 'contact';
 
 const sectionTitles: SectionKey[] = ['hero', 'skills', 'projects', 'hobbies', 'contact'];
-const heroPhotoSrc = '/profile-placeholder.svg';
+const heroPhotoSrc = '/profile.png';
 const psychologySections = [
   {
     title: 'Jungian Psychology',

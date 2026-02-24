@@ -42,6 +42,7 @@ const RobotAssistant: React.FC<RobotAssistantProps> = ({ activeSection, onNaviga
   };
 
   const navigationItems = [
+    { id: 'hero', label: 'Home' },
     { id: 'skills', label: 'Skills' },
     { id: 'projects', label: 'Projects' },
     { id: 'hobbies', label: 'Hobbies' },
@@ -89,9 +90,8 @@ const RobotAssistant: React.FC<RobotAssistantProps> = ({ activeSection, onNaviga
                     {navigationItems.map((item, index) => (
                       <a
                         key={item.id}
-                        href={`#${item.id}`}
-                        onClick={(e) => {
-                          e.preventDefault();
+                        href={`/#${item.id}`}
+                        onClick={() => {
                           handleNavigate(item.id);
                         }}
                         className={`block w-full px-4 py-2.5 text-left text-sm transition-colors ${
