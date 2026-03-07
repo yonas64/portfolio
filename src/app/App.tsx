@@ -74,16 +74,15 @@ const psychologySections = [
 ];
 const projectShowcase = [
   {
-    title: 'WegenBridge',
-    year: '2026',
-    status: 'GitHub',
+    title: 'SecureAuth Dashboard',
+    year: '2025',
+    status: 'Live',
     description:
-      'Open-source project available on GitHub. Click through to view the repository and source code.',
-    imageUrl: 'https://image.thum.io/get/width/1200/https://wegen-bridge.vercel.app/',
-    tech: ['GitHub'],
-    outcomes: ['Public repository', 'Source code available', 'Active project showcase'],
-    demoUrl: 'https://wegen-bridge.vercel.app/',
-    codeUrl: 'https://github.com/yonas64/WegenBridge',
+      'Enterprise authentication platform handling 100k+ daily active users with OAuth 2.0, MFA, and SSO.',
+    tech: ['Next.js', 'PostgreSQL', 'Redis', 'OAuth 2.0'],
+    outcomes: ['99.98% auth uptime', '35% faster login flow', 'Reduced support tickets by 41%'],
+    demoUrl: '#',
+    codeUrl: '#',
   },
   {
     title: 'Real-time Analytics Engine',
@@ -246,7 +245,7 @@ export default function App() {
                         alt={`${section.title} concept illustration`}
                         className="h-56 w-full object-cover"
                       />
-                      <div className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/5" />
+                      <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/5" />
                     </div>
                   </motion.div>
 
@@ -361,17 +360,17 @@ export default function App() {
             <motion.div variants={riseIn} className="mx-auto w-full max-w-[19rem] sm:max-w-[22rem]">
               <div className="relative">
                 <div className="pointer-events-none absolute -inset-5 bg-cyan-400/10 blur-3xl" />
-                <div className="pointer-events-none absolute -inset-3 rounded-full border border-cyan-300/30" />
-                <div className="pointer-events-none absolute -inset-8 rounded-full border border-dashed border-cyan-300/20" />
+                <div className="pointer-events-none absolute -left-5 -top-5 h-16 w-16 border-l border-t border-cyan-300/40" />
+                <div className="pointer-events-none absolute -bottom-5 -right-5 h-16 w-16 border-b border-r border-cyan-300/40" />
 
-                <div className="relative overflow-hidden rounded-full border border-zinc-800 bg-zinc-900 shadow-2xl">
+                <div className="relative overflow-hidden border border-zinc-800 bg-zinc-900 shadow-2xl">
                   <ImageWithFallback
                     src={heroPhotoSrc}
                     alt="Yonas portrait"
-                    className="aspect-square w-full object-cover object-[50%_18%] grayscale contrast-110 transition duration-500 hover:grayscale-0"
+                    className="h-[24rem] w-full object-cover grayscale contrast-110 transition duration-500 hover:grayscale-0"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-zinc-950/40 via-transparent to-transparent" />
-                  <div className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/5" />
+                  <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/5" />
                 </div>
               </div>
               <p className="mt-3 text-center text-xs text-zinc-500"></p>
@@ -475,17 +474,6 @@ export default function App() {
                   </div>
 
                   <div className="relative">
-                    {project.imageUrl && (
-                      <div className="relative mb-6 overflow-hidden border border-zinc-800 bg-zinc-900/60">
-                        <ImageWithFallback
-                          src={project.imageUrl}
-                          alt={`${project.title} landing page preview`}
-                          className="h-52 w-full object-cover object-top"
-                        />
-                        <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/5" />
-                      </div>
-                    )}
-
                     <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
                       <h3 className="text-2xl">{project.title}</h3>
                       <div className="flex items-center gap-2">
@@ -660,7 +648,7 @@ export default function App() {
             </motion.div>
 
             <motion.div variants={riseIn} className="text-center text-sm text-zinc-600">
-              (c) 2026 Yonas Feshazion. Built with React and an unhealthy amount of coffee.
+              (c) 2026 YONAS BEZAWERK. Built with React and an unhealthy amount of coffee.
             </motion.div>
           </div>
         </motion.section>
@@ -670,9 +658,3 @@ export default function App() {
     </div>
   );
 }
-
-
-
-
-
-
